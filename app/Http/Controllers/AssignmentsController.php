@@ -14,7 +14,9 @@ class AssignmentsController extends Controller
      */
     public function index()
     {
-        //
+//        $assignments = \App\Assignment::all();
+        $assignments = \App\Assignment::orderby('created_at', 'desc')->get();
+        return view('assignments.index', compact('assignments'));
     }
 
     /**
@@ -24,7 +26,7 @@ class AssignmentsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('assignments.create');
     }
 
     /**
@@ -35,7 +37,11 @@ class AssignmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $assignment = new Assignment();
+        $assignment->naam = request('naamInput');
+        $assignment->beschrijving = request('beschrijvingTextArea');
+        $assignment->save();
+        return redirect('/assignments');
     }
 
     /**
@@ -44,9 +50,10 @@ class AssignmentsController extends Controller
      * @param  \App\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function show(Assignment $assignment)
+    public function show($id)
     {
-        //
+        $assignments = \App\Assignment::find($id);
+        return view('assignments.show', compact('assignments'));
     }
 
     /**
@@ -55,9 +62,9 @@ class AssignmentsController extends Controller
      * @param  \App\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Assignment $assignment)
-    {
-        //
+    public function edit($id){
+        $assignments = \App\Assignment::find($id);
+        return view('assignments.edit', compact('assignments'));
     }
 
     /**
@@ -67,9 +74,12 @@ class AssignmentsController extends Controller
      * @param  \App\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Assignment $assignment)
-    {
-        //
+    public function update($id){
+        $assignments = Assignment::find($id);
+        $assignments->naam = request('naamInput');
+        $assignments->beschrijving = request('beschrijvingTextArea');
+        $assignments->save();
+        return redirect('/assignments');
     }
 
     /**
@@ -78,8 +88,8 @@ class AssignmentsController extends Controller
      * @param  \App\Assignment  $assignment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Assignment $assignment)
-    {
-        //
+    public function destroy($id){
+        Assignment::findOrFail($id)->delete();
+        return redirect('/assignments');
     }
 }

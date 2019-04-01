@@ -14,7 +14,9 @@ class GradesController extends Controller
      */
     public function index()
     {
-        //
+//        $grades = \App\Grade::all();
+        $grades = \App\Grade::orderby('created_at', 'desc')->get();
+        return view('grades.index', compact('grades'));
     }
 
     /**
@@ -24,7 +26,7 @@ class GradesController extends Controller
      */
     public function create()
     {
-        //
+        return view ('grades.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class GradesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $grade = new Grade();
+        $grade->registratie = request('registratieInput');
+        $grade->cursus = request('cursusInput');
+        $grade->toets = request('toetsInput');
+        $grade->poging = request('pogingInput');
+        $grade->resultaat = request('resultaatInput');
+        $grade->geldig = request('geldigInput');
+        $grade->save();
+        return redirect('/grades');
     }
 
     /**
@@ -44,9 +54,10 @@ class GradesController extends Controller
      * @param  \App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function show(Grade $grade)
+    public function show($id)
     {
-        //
+        $grades = \App\Grade::find($id);
+        return view('grades.show', compact('grades'));
     }
 
     /**
@@ -55,9 +66,10 @@ class GradesController extends Controller
      * @param  \App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grade $grade)
+    public function edit($id)
     {
-        //
+        $grades = \App\Grade::find($id);
+        return view('grades.edit', compact('grades'));
     }
 
     /**
@@ -67,9 +79,17 @@ class GradesController extends Controller
      * @param  \App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grade $grade)
+    public function update($id)
     {
-        //
+        $grades = Grade::find($id);
+        $grades->registratie = request('registratieInput');
+        $grades->cursus = request('cursusInput');
+        $grades->toets = request('toetsInput');
+        $grades->poging = request('pogingInput');
+        $grades->resultaat = request('resultaatInput');
+        $grades->geldig = request('geldigInput');
+        $grades->save();
+        return redirect('/grades');
     }
 
     /**
@@ -78,8 +98,9 @@ class GradesController extends Controller
      * @param  \App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grade $grade)
+    public function destroy($id)
     {
-        //
+        Grade::findOrFail($id)->delete();
+        return redirect('/grades');
     }
 }
