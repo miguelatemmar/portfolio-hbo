@@ -15,7 +15,8 @@ class AssignmentsController extends Controller
     public function index()
     {
 //        $assignments = \App\Assignment::all();
-        $assignments = \App\Assignment::orderby('created_at', 'desc')->get();
+//        $assignments = \App\Assignment::orderby('created_at', 'desc')->get();
+        $assignments = \App\Assignment::orderby('created_at', 'desc')->paginate(5);
         return view('assignments.index', compact('assignments'));
     }
 

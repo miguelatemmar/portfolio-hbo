@@ -19,19 +19,19 @@
 
         <div class="form-group">
             <label for="registratieInput">Registratie:</label>
-            <input type="date" class="form-control" id="registratieInput" name="registratieInput" value="">
+            <input type="date" class="form-control" id="registratieInput" name="registratieInput" required>
 
             <label for="cursusInput">Cursus</label>
-            <textarea class="form-control  mb-2 mr-sm-2 mb-sm-0" id="cursusInput" name="cursusInput" rows="2"></textarea>
+            <textarea class="form-control  mb-2 mr-sm-2 mb-sm-0" id="cursusInput" name="cursusInput" rows="2" required></textarea>
 
             <label for="projectNameInput">Toets:</label>
-            <input type="text" class="form-control" id="toetsInput" name="toetsInput" >
+            <input type="text" class="form-control" id="toetsInput" name="toetsInput" required>
 
             <label for="pogingInput">Poging:</label>
-            <input type="text" class="form-control" id="pogingInput" name="pogingInput" >
+            <input type="text" class="form-control" id="pogingInput" name="pogingInput" required>
 
             <label for="resultaatInput">Resultaat:</label>
-            <input type="text" class="form-control" id="resultaatInput" name="resultaatInput" >
+            <input type="text" class="form-control" id="resultaatInput" name="resultaatInput" required>
 
             <label for="geldigInput">Geldig:</label>
             <input type="text" class="form-control" id="geldigInput" name="geldigInput" >

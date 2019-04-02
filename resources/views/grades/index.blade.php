@@ -10,26 +10,7 @@
     </a>
 
     <br>
-    <!-- Paginatie/Numering -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+
     <!-- Data tabel -->
     <table class="table table-hover table-striped">
         <thead>
@@ -41,6 +22,13 @@
         </tr>
         </thead>
         <tbody>
+        <br>
+        <!-- Paginatie/Numering -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {{ $grades->links() }}
+            </ul>
+        </nav>
 
         @foreach($grades as $row)
             <tr>
@@ -63,25 +51,10 @@
 
         </tbody>
     </table>
-
     <!-- Paginatie/Numering -->
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
+            {{ $grades->links() }}
         </ul>
     </nav>
 
