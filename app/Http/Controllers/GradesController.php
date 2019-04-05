@@ -17,6 +17,7 @@ class GradesController extends Controller
 //        $grades = \App\Grade::all();
 //        $grades = \App\Grade::orderby('created_at', 'desc')->get();
         $grades = \App\Grade::orderBy('id', 'desc')->paginate(10);
+//        dd($grades);
         return view('grades.index', compact('grades'));
     }
 

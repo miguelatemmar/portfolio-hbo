@@ -15,7 +15,8 @@
 
         <div class="form-group">
             <label for="beschrijvingTextArea">Beschrijving</label>
-            <textarea class="form-control" id="beschrijvingTextArea" name="beschrijvingTextArea" rows="4" required></textarea>
+            <textarea class="form-control" id="beschrijvingTextArea"
+                      name="beschrijvingTextArea" rows="4" required></textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="form-control btn btn-primary mb-2">Toevoegen</button>

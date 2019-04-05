@@ -7,11 +7,6 @@
 </head>
 <body>
 <div class="wrapper">
-    {{--<h1>Homepage</h1>--}}
-
-    {{--<p>Geen navigatie bar</p>--}}
-
-    {{--<p>blokken design < navigatie</p>--}}
 
     <div class="container">
         <div class="row justify-content-md-center">
@@ -36,7 +31,6 @@
 </body>
 <style>
     body {
-        /*background: #fafafa;*/
         line-height: 140%;
     }
     .wrapper {
@@ -47,8 +41,9 @@
     }
     .home-blocks{
         background-color:#F2F2F2;
-        margin: 15px;
+        /*margin: 15px;*/
         padding: 30px 0 30px 0;
+        /*width: 100vh;*/
         width:500px;
         text-align:center;
         color: grey;

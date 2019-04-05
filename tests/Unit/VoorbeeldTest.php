@@ -55,6 +55,4 @@ class VoorbeeldTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('assignments');
     }
-
-     //*/
 }

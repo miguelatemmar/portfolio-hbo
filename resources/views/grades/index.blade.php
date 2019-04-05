@@ -4,6 +4,7 @@
 @section('content')
 
     <h1>Dashboard</h1>
+
     <hr class="sub">
     <a href="grades/create">
         <button type="button" class="btn btn-primary justify-content-right">Toevoegen</button>
