@@ -21,8 +21,9 @@
             <div class="row">
                 <div class="col"><label class="col-form-label"><strong>Registratie:</strong></label></div>
                 <div class="col col-md-9">
-                    <input type="text" class="form-control" id="registratieInput"
+                    <input type="date" class="form-control" id="registratieInput"
                            name="registratieInput" value="{{ $grades->registratie }}">
+                    {{--{{ date('d-m-Y', strtotime($grades->created_at)) }}--}}
                 </div>
             </div>
             <div class="row">

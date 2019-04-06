@@ -31,12 +31,13 @@
         <br>
         <div class="row">
             <div class="col"><label class="col-form-label"><strong>Aangemaakt op:</strong></label></div>
-            <div class="col col-md-9">{{ $assignments->created_at }}</div>
+            <div class="col col-md-9">{{ date('d-m-Y H:i:s', strtotime($assignments->created_at)) }}</div>
+
         </div>
 
         <div class="row">
             <div class="col"><label class="col-form-label"><strong>Bewerkt op:</strong></label></div>
-            <div class="col col-md-9">{{ $assignments->updated_at }}</div>
+            <div class="col col-md-9">{{ date('d-m-Y H:i:s', strtotime($assignments->updated_at)) }}</div>
         </div>
     </div>
 
@@ -45,5 +46,8 @@
 
     <a href="{{URL::to("/assignments/".$assignments->id."/edit")}}">
         <button class="btn btn-primary" type="submit">Bewerken</button></a>
+
+    <button type="delete" onclick="return confirm('Weet je het zeker?')"
+            class="btn btn-danger float-right">Verwijderen</button>
 
 @endsection

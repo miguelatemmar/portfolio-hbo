@@ -30,15 +30,24 @@
 
         @foreach($assignments as $row)
             <tr>
-                <td><a href="{{URL::to("assignments/" . $row->id)}}">{{ $row->naam }}</a></td>
-                <td><small>{{ $row->beschrijving }}</small></td>
-                <td><a href="{{URL::to("assignments/" . $row->id . "/edit")}}">
-                        <button class="btn btn-sm btn-outline-secondary" type="button">Bewerken</button></a>
+                <td>
+                    <a href="{{URL::to("assignments/" . $row->id)}}">{{ $row->naam }}</a>
+                </td>
+                <td>
+                    <small>{{ $row->beschrijving }}</small>
+                </td>
+                <td>
+                    <a href="{{URL::to("assignments/" . $row->id . "/edit")}}">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Bewerken</button>
+                    </a>
                 </td>
                 <form method="POST" action="{{ url("/assignments/$row->id") }}">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <td><button type="delete" class="form-control btn btn-sm btn-outline-danger">Verwijderen</button></td>
+                    <td>
+                        <button type="delete" onclick="return confirm('Weet je het zeker?')"
+                                class="btn btn-sm btn-outline-danger">Verwijderen</button>
+                    </td>
                 </form>
             </tr>
         @endforeach

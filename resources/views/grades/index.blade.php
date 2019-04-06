@@ -34,18 +34,31 @@
         @foreach($grades as $row)
             <tr>
                 <td>
-                    <small><a href="{{URL::to("grades/" . $row->id)}}">{{ $row->cursus }}</a></small>
+                    <small>
+                        <a href="{{URL::to("grades/" . $row->id)}}">{{ $row->cursus }}</a>
+                    </small>
                 </td>
-                <td><small>{{ $row->toets }}</small></td>
-                <td><small>{{ $row->poging }}</small></td>
-                <td><small>{{ $row->resultaat }}</small></td>
-                <td><a href="{{URL::to("grades/" . $row->id . "/edit")}}">
-                        <button class="btn btn-sm btn-outline-secondary" type="button">Bewerken</button></a>
+                <td>
+                    <small>{{ $row->toets }}</small>
+                </td>
+                <td>
+                    <small>{{ $row->poging }}</small>
+                </td>
+                <td>
+                    <small>{{ $row->resultaat }}</small>
+                </td>
+                <td>
+                    <a href="{{URL::to("grades/" . $row->id . "/edit")}}">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Bewerken</button>
+                    </a>
                 </td>
                 <form method="POST" action="{{ url("/grades/$row->id") }}">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <td><button type="delete" class="form-control btn btn-sm btn-outline-danger">Verwijderen</button></td>
+                    <td>
+                        <button type="delete" onclick="return confirm('Weet je het zeker?')"
+                                class="form-control btn btn-sm btn-outline-danger">Verwijderen</button>
+                    </td>
                 </form>
             </tr>
         @endforeach

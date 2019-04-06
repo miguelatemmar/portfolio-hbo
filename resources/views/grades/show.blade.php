@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col"><label class="col-form-label"><strong>Registratie:</strong></label></div>
-            <div class="col col-md-9">{{ $grades->registratie }}</div>
+            <div class="col col-md-9">{{ date('d-m-Y', strtotime($grades->registratie)) }}</div>
         </div>
 
         <div class="row">
@@ -45,12 +45,12 @@
         </div>
         <div class="row">
             <div class="col"><label class="col-form-label"><strong>Aangemaakt op:</strong></label></div>
-            <div class="col col-md-9">{{ $grades->created_at }}</div>
+            <div class="col col-md-9">{{ date('d-m-Y H:i:s', strtotime($grades->created_at)) }}</div>
         </div>
 
         <div class="row">
             <div class="col"><label class="col-form-label"><strong>Bewerkt op:</strong></label></div>
-            <div class="col col-md-9">{{ $grades->updated_at }}</div>
+            <div class="col col-md-9">{{ date('d-m-Y H:i:s', strtotime($grades->updated_at)) }}</div>
         </div>
     </div>
 
@@ -59,5 +59,8 @@
 
     <a href="{{URL::to("/grades/".$grades->id."/edit")}}">
         <button class="btn btn-primary" type="submit">Bewerken</button></a>
+
+    <button type="delete" onclick="return confirm('Weet je het zeker?')"
+            class="btn btn-danger float-right">Verwijderen</button>
 
 @endsection

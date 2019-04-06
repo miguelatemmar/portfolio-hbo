@@ -55,4 +55,45 @@ class VoorbeeldTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('assignments');
     }
+
+    public function testItWritesGoodFormToDatabaseAndRedirectsToIndexGrades(){
+        $token = 'tofu';
+        $registratie = '01-01-2020';
+        $cursus = 'testCursus';
+        $toets = 'testToets';
+        $poging = '1';
+        $resultaat = '7.7';
+        $geldig = '-';
+
+        $response = $this
+            ->withSession(['_token' => $token])
+            ->post(
+                '/grades',
+                [
+                    '_token' => $token,
+                    'registratieInput' => $registratie,
+                    'cursusInput' => $cursus,
+                    'toetsInput' => $toets,
+                    'pogingInput' => $poging,
+                    'resultaatInput' => $resultaat,
+                    'geldigInput' => $geldig,
+                ]
+            );
+
+        $this->assertDatabaseHas(
+            'grades',
+            [
+                'registratie' => $registratie,
+                'cursus' => $cursus,
+                'toets' => $toets,
+                'poging' => $poging,
+                'resultaat' => $resultaat,
+                'geldig' => $geldig
+            ]
+        );
+
+        $response->assertStatus(302);
+        $response->assertRedirect('grades');
+    }
+
 }
