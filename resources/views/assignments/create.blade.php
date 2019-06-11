@@ -19,6 +19,17 @@
                       name="beschrijvingTextArea" rows="4" required></textarea>
         </div>
         <div class="form-group">
+            <label for="statusInput">Status:</label>
+            <select id="statusInput" name="statusInput">
+
+                @foreach($status as $row)
+                    <option value="">{{ $row->status}}</option>
+                @endforeach
+
+            </select>
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="form-control btn btn-primary mb-2">Toevoegen</button>
         </div>
         <a href="{{URL::to("/assignments/")}}">

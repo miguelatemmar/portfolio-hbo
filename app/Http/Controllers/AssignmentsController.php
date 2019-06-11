@@ -14,10 +14,10 @@ class AssignmentsController extends Controller
      */
     public function index()
     {
-//        $assignments = \App\Assignment::all();
-//        $assignments = \App\Assignment::orderby('created_at', 'desc')->get();
-        $assignments = \App\Assignment::orderby('created_at', 'desc')->paginate(5);
-        return view('assignments.index', compact('assignments'));
+//        $assignments = \App\Assignment::orderby('created_at', 'desc')->paginate(5);
+        $assignments = \App\Assignment::all();
+        $status = \App\Status::all();
+        return view('assignments.index', compact('assignments', 'status'));
     }
 
     /**
@@ -27,7 +27,9 @@ class AssignmentsController extends Controller
      */
     public function create()
     {
-        return view ('assignments.create');
+        $status = \App\Status::all();
+        return view ('assignments.create', compact('status'));
+//        return view('assignments.create');
     }
 
     /**
@@ -41,6 +43,7 @@ class AssignmentsController extends Controller
         $assignment = new Assignment();
         $assignment->naam = request('naamInput');
         $assignment->beschrijving = request('beschrijvingTextArea');
+        $assignment->status_id = request('statusInput');
         $assignment->save();
         return redirect('/assignments');
     }
@@ -79,6 +82,7 @@ class AssignmentsController extends Controller
         $assignments = Assignment::find($id);
         $assignments->naam = request('naamInput');
         $assignments->beschrijving = request('beschrijvingTextArea');
+        $assignments->status_id = request('statusInput');
         $assignments->save();
         return redirect('/assignments');
     }

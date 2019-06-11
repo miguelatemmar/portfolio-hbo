@@ -8,22 +8,23 @@
     <hr class="sub">
 
     <a href="assignments/create">
-        <button type="button" class="btn btn-primary justify-content-right">Toevoegen</button>
+        <button type="button" class="btn btn-primary float-right">Toevoegen</button>
     </a>
 
     <br>
-    <!-- Paginatie/Numering -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {{ $assignments->links() }}
-        </ul>
-    </nav>
+    {{--<!-- Paginatie/Numering -->--}}
+    {{--<nav aria-label="Page navigation example">--}}
+        {{--<ul class="pagination justify-content-center">--}}
+            {{--{{ $assignments->links() }}--}}
+        {{--</ul>--}}
+    {{--</nav>--}}
     <!-- Data tabel -->
     <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th scope="col">Naam</th>
-            <th colspan="3">Beschrijving</th>
+            <th colspan="1">Beschrijving</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,10 @@
                     <small>{{ $row->beschrijving }}</small>
                 </td>
                 <td>
+                    {{ $row->status }}
+                </td>
+                {{--
+                <td>
                     <a href="{{URL::to("assignments/" . $row->id . "/edit")}}">
                         <button class="btn btn-sm btn-outline-secondary" type="button">Bewerken</button>
                     </a>
@@ -49,21 +54,22 @@
                                 class="btn btn-sm btn-outline-danger">Verwijderen</button>
                     </td>
                 </form>
+                --}}
             </tr>
         @endforeach
 
         </tbody>
     </table>
 
-    <!-- Paginatie/Numering -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {{ $assignments->links() }}
-        </ul>
-    </nav>
+    {{--<!-- Paginatie/Numering -->--}}
+    {{--<nav aria-label="Page navigation example">--}}
+        {{--<ul class="pagination justify-content-center">--}}
+            {{--{{ $assignments->links() }}--}}
+        {{--</ul>--}}
+    {{--</nav>--}}
 
     <a href="assignments/create">
-        <button type="button" class="btn btn-primary">Toevoegen</button>
+        <button type="button" class="btn btn-primary float-right">Toevoegen</button>
     </a>
 
 @endsection
