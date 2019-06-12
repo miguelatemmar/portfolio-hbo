@@ -23,10 +23,13 @@
             <div class="col"><label class="col-form-label"><strong>Naam:</strong></label></div>
             <div class="col col-md-9">{{ $assignments->naam }}</div>
         </div>
-
         <div class="row">
             <div class="col"><label class="col-form-label"><strong>Beschrijving:</strong></label></div>
             <div class="col col-md-9">{{ $assignments->beschrijving }}</div>
+        </div>
+        <div class="row">
+            <div class="col"><label class="col-form-label"><strong>Status:</strong></label></div>
+            <div class="col col-md-9">{{ $assignments->status }}</div>
         </div>
         <br>
         <div class="row">

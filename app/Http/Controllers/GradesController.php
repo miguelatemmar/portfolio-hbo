@@ -39,6 +39,12 @@ class GradesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'cursus' => 'required|unique',
+        ],[
+            'cursus.required' => 'Cursus is verplicht.',
+        ]);
+
         $grade = new Grade();
         $grade->registratie = request('registratieInput');
         $grade->cursus = request('cursusInput');

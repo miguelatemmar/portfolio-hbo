@@ -16,8 +16,9 @@ class AssignmentsController extends Controller
     {
 //        $assignments = \App\Assignment::orderby('created_at', 'desc')->paginate(5);
         $assignments = \App\Assignment::all();
-        $status = \App\Status::all();
-        return view('assignments.index', compact('assignments', 'status'));
+        $statuses = \App\Status::all();
+//        $statuses = \App\Status::with('Assignment')->get();
+        return view('assignments.index', compact('assignments', 'statuses'));
     }
 
     /**
@@ -29,7 +30,6 @@ class AssignmentsController extends Controller
     {
         $status = \App\Status::all();
         return view ('assignments.create', compact('status'));
-//        return view('assignments.create');
     }
 
     /**
@@ -40,6 +40,7 @@ class AssignmentsController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         $assignment = new Assignment();
         $assignment->naam = request('naamInput');
         $assignment->beschrijving = request('beschrijvingTextArea');

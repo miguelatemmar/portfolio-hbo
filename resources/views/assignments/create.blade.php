@@ -23,7 +23,7 @@
             <select id="statusInput" name="statusInput">
 
                 @foreach($status as $row)
-                    <option value="">{{ $row->status}}</option>
+                    <option value="{{$row->id}}">{{ $row->status}}</option>
                 @endforeach
 
             </select>

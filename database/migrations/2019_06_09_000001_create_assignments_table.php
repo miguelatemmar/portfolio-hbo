@@ -21,16 +21,15 @@ class CreateAssignmentsTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('naam');
             $table->longText('beschrijving')->nullable();
-            $table->unsignedInteger('status_id');
-            $table->index(["status_id"], 'fk_status_id_idx');
+            $table->unsignedBigInteger('status_id')->unsigned()->nullable();
+            // nullable toevoegen, geen error [nog steeds een leeg record]
 
             $table->nullableTimestamps();
 
-            $table->foreign('status_id', 'fk_status_id_idx')
+            $table->foreign('status_id')
                 ->references('id')->on('statuses')
                 ->onDelete('no action')
                 ->onUpdate('no action');
